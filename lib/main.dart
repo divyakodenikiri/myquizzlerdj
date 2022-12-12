@@ -1,4 +1,11 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
+import 'quiz_brain.dart';
+
+QuizBrain quizBrain = QuizBrain();
+
+
 
 void main() => runApp(Quizzler());
 
@@ -25,17 +32,15 @@ class QuizPage extends StatefulWidget {
 }
  class _QuizPageState extends State<QuizPage> {
   List<Icon> scorekeeper = [];
-  List<String> questions = [
-    'You can lead a cow down stairs but not up stairs.',
-    'Approximately one quarter of human bones are in the feet.',
-    'A slug\'s blood is green.'
-  ];
+  // List<String> questions = [
+  //   'You can lead a cow down stairs but not up stairs.',
+  //   'Approximately one quarter of human bones are in the feet.',
+  //   'A slug\'s blood is green.'
+  // ];
   
-  List<bool> answers = [
-    false,
-    true,
-    true
-  ];
+  // List<bool> answers = [ false, true, true ];
+  // Question q1 = Question(q:'You can lead a cow down stairs but not up stairs.',a: false);
+
 
   int questionNumber = 0;
   @override
@@ -50,7 +55,7 @@ class QuizPage extends StatefulWidget {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                questions[questionNumber],
+               quizBrain.questionBank[questionNumber].questionText,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -76,7 +81,8 @@ class QuizPage extends StatefulWidget {
               onPressed: () {
                 //The user picked true.
 
-                bool correctAnswer = answers[questionNumber];
+                bool correctAnswer =
+                quizBrain.questionBank[questionNumber].questionAnswer;
                 if(correctAnswer == true){
                   print('user got it right!');
                 }else{
@@ -105,7 +111,8 @@ class QuizPage extends StatefulWidget {
               ),
               onPressed: () {
                 //The user picked false.
-                bool correctAnswer = answers[questionNumber];
+                bool correctAnswer = 
+                quizBrain.questionBank[questionNumber].questionAnswer;
                 if(correctAnswer == false){
                   print('user got it right!');
                 }else{
@@ -122,13 +129,14 @@ class QuizPage extends StatefulWidget {
         ),
      Row(
       children: scorekeeper ,
-     )
+     ),
       ],
     );
   }
 }
 // hi everyone
 //hi good morning
+//hiiii
 
 
 
